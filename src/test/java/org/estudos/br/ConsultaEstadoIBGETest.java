@@ -18,6 +18,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class ConsultaEstadoIBGETest {
+    @Mock
+    private HttpURLConnection connectionMock;
+
+    private static final String JSON_RESPONSE =
+            "{\"id\":31,\"sigla\":\"MG\",\"nome\":\"Minas Gerais\",\"regiao\":{\"id\":3,\"sigla\":\"SE\",\"nome\":\"Sudeste\"}}";
+
+    @BeforeEach
+    public void criaMock() throws IOException {
+        MockitoAnnotations.openMocks(this); // Inicializando o Mock
+
+        // Configurando o Mock
+        InputStream inputStream = new ByteArrayInputStream(JSON_RESPONSE.getBytes());
+        when(connectionMock.getInputStream()).thenReturn(inputStream);
+    }
+
     @Test
     @DisplayName("Teste estado simples")
     public void testConsultarEstado() throws IOException {
@@ -39,23 +54,8 @@ public class ConsultaEstadoIBGETest {
         assertEquals(resultadoEsperado, jsonResposta.getString("sigla"));
     }
 
-    @Mock
-    private HttpURLConnection connectionMock;
-
-    private static final String JSON_RESPONSE =
-            "{\"id\":31,\"sigla\":\"MG\",\"nome\":\"Minas Gerais\",\"regiao\":{\"id\":3,\"sigla\":\"SE\",\"nome\":\"Sudeste\"}}";
-
-    @BeforeEach
-    public void criaMock() throws IOException {
-        MockitoAnnotations.openMocks(this); // Inicializando o Mock
-
-        // Configurando o Mock
-        InputStream inputStream = new ByteArrayInputStream(JSON_RESPONSE.getBytes());
-        when(connectionMock.getInputStream()).thenReturn(inputStream);
-    }
-
     @Test
-    @DisplayName("Teste usando o Mock")
+    @DisplayName("Teste estado usando o Mock")
     public void testConsultarEstadoComMock() throws IOException {
         String uf = "MG"; // Estado que será consultado
         String resposta = ConsultaIBGE.consultarEstado(uf); // Chama o método utilizado para teste
