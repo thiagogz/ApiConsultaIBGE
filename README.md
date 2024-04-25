@@ -2,6 +2,10 @@
 
 Este projeto é uma simples aplicação Java que utiliza a API do IBGE para consultar informações sobre estados brasileiros.
 
+## Contribuição
+RM99085 - Thiago Zupelli\
+[Link do SonarCloud](https://sonarcloud.io/project/overview?id=thiagogz_ApiConsultaIBGE)
+
 ## Funcionalidades
 
 - Consulta informações de um estado específico com base na sigla do estado.
@@ -99,7 +103,3 @@ public class ExemploUso {
 ## Postman
 
 Na pasta 'Postman' na raiz do projeto, você encontrará uma collection com todas as chamadas da API. Essa collection pode ser importada no Postman para facilitar o teste das chamadas.
-
-## Contribuindo
-
-Se você deseja contribuir com este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
