@@ -41,7 +41,7 @@ public class ConsultaEstadoIBGETest {
         String resposta = ConsultaIBGE.consultarEstado(uf); // Chama o método utilizado para teste
 
         // Assert
-        assertEquals(respostaEsperada, resposta);
+        assertEquals(respostaEsperada, resposta, "O retorno da API não corresponde com a resposta esperada.");
     }
 
     @ParameterizedTest
@@ -51,7 +51,7 @@ public class ConsultaEstadoIBGETest {
         String resposta = ConsultaIBGE.consultarEstado(estadoEscolhido); // Chama o método utilizado para teste
         JSONObject jsonResposta = new JSONObject(resposta); // Convertendo a resposta para JSON para facilitar a comparação
 
-        assertEquals(resultadoEsperado, jsonResposta.getString("sigla"));
+        assertEquals(resultadoEsperado, jsonResposta.getString("sigla"), "A sigla do estado não corresponde com a resposta esperada.");
     }
 
     @Test

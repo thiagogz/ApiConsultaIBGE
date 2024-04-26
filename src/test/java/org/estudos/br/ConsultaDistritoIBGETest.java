@@ -43,7 +43,7 @@ public class ConsultaDistritoIBGETest {
         String resposta = ConsultaIBGE.consultarDistrito(idDistrito); // Chama o método utilizado para teste
 
         // Assert
-        assertEquals(respostaEsperada, resposta);
+        assertEquals(respostaEsperada, resposta, "O id fornecido e a resposta esperadas não correspondem.");
     }
 
     @ParameterizedTest
@@ -58,7 +58,7 @@ public class ConsultaDistritoIBGETest {
         // Verifica se o status code é 200 (OK)
         HttpURLConnection connection = (HttpURLConnection) new URL(DISTRITOS_API_URL + idDistrito).openConnection();
         int statusCode = connection.getResponseCode();
-        assertEquals(200, statusCode, "O status code da resposta da API deve ser 200 (OK)");
+        assertEquals(200, statusCode, "O status code da resposta da API deve ser 200.");
     }
 
     @Test
